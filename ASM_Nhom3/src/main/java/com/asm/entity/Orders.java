@@ -4,7 +4,12 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import jakarta.persistence.*;
-
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "Orders")
 public class Orders {
