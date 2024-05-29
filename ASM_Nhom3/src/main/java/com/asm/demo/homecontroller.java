@@ -6,19 +6,4 @@ public class homecontroller {
 		return null;
 		
 	}
-	public String dem1()
-	{
-		return null;
-		
-	}
-	public String dem2()
-	{
-		return null;
-		
-	}
-	public String demcc()
-	{
-		return null;
-		
-	}
 }
