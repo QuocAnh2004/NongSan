@@ -6,4 +6,9 @@ public class homecontroller {
 		return null;
 		
 	}
+	public String nhanKiet()
+	{
+		return null;
+		
+	}
 }
