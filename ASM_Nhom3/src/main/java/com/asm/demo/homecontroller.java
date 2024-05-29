@@ -6,9 +6,21 @@ public class homecontroller {
 		return null;
 		
 	}
+
 	
 	public String qa()
 	{
 		return null;
+
+	public String nhanKiet()
+	{
+		return null;
+		
+	}
+	public String QA()
+	{
+		return null;
+		
+
 	}
 }
