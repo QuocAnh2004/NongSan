@@ -31,26 +31,19 @@
                             <div class="col-lg-6">
                                 <div class="border rounded">
                                     <a href="#">
-                                        <img src="img/single-item.jpg" class="img-fluid rounded" alt="Image">
+                                        <c:url value="/template/user/picture/${product.imageUrl}" var="productImageUrl"/>
+                                        <img src="${productImageUrl}" class="img-fluid rounded" alt="${product.productName}">
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <h4 class="fw-bold mb-3">Brocoli</h4>
-                                <p class="mb-3">Category: Vegetables</p>
-                                <h5 class="fw-bold mb-3">3,35 $</h5>
-                                <div class="d-flex mb-4">
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star text-secondary"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <p class="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc.</p>
-                                <p class="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish</p>
+                                <h4 class="fw-bold mb-3">${product.productName}</h4>
+                                <p class="mb-3">Category: ${product.category.categoryName}</p>
+                                <h5 class="fw-bold mb-3">${product.price} $</h5>
+                                <p class="mb-4">${product.description}</p>
                                 <div class="input-group quantity mb-5" style="width: 100px;">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                                        <button class="btn btn-sm btn-minus rounded-circle bg-light border">
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
@@ -61,7 +54,9 @@
                                         </button>
                                     </div>
                                 </div>
-                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                <a href="#" class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
+                                    <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+                                </a>
                             </div>
                             <div class="col-lg-12">
                                 <nav>
@@ -70,16 +65,14 @@
                                             id="nav-about-tab" data-bs-toggle="tab" data-bs-target="#nav-about"
                                             aria-controls="nav-about" aria-selected="true">Description</button>
                                         <button class="nav-link border-white border-bottom-0" type="button" role="tab"
-                                            id="nav-mission-tab" data-bs-toggle="tab" data-bs-target="#nav-mission"
-                                            aria-controls="nav-mission" aria-selected="false">Reviews</button>
+                                            id="nav-reviews-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews"
+                                            aria-controls="nav-reviews" aria-selected="false">Reviews</button>
                                     </div>
                                 </nav>
+                                    <!-- đánh giá sản phẩm -->
                                 <div class="tab-content mb-5">
                                     <div class="tab-pane active" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
-                                        <p>The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic words etc. 
-                                            Susp endisse ultricies nisi vel quam suscipit </p>
-                                        <p>Sabertooth peacock flounder; chain pickerel hatchetfish, pencilfish snailfish filefish Antarctic 
-                                            icefish goldeye aholehole trumpetfish pilot fish airbreathing catfish, electric ray sweeper.</p>
+                                        <p>${product.description}</p>
                                         <div class="px-2">
                                             <div class="row g-4">
                                                 <div class="col-6">
@@ -88,7 +81,7 @@
                                                             <p class="mb-0">Weight</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <p class="mb-0">1 kg</p>
+                                                            <p class="mb-0">${product.unit.name}</p> <!-- tên đơn vị -->
                                                         </div>
                                                     </div>
                                                     <div class="row text-center align-items-center justify-content-center py-2">
@@ -96,7 +89,7 @@
                                                             <p class="mb-0">Country of Origin</p>
                                                         </div>
                                                         <div class="col-6">
-                                                            <p class="mb-0">Agro Farm</p>
+                                                            <p class="mb-0">${product.supplier.name}</p> <!-- tên nhà cung cấp-->
                                                         </div>
                                                     </div>
                                                     <div class="row bg-light text-center align-items-center justify-content-center py-2">
@@ -109,7 +102,7 @@
                                                     </div>
                                                     <div class="row text-center align-items-center justify-content-center py-2">
                                                         <div class="col-6">
-                                                            <p class="mb-0">Сheck</p>
+                                                            <p class="mb-0">Check</p>
                                                         </div>
                                                         <div class="col-6">
                                                             <p class="mb-0">Healthy</p>
@@ -127,49 +120,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="nav-mission" role="tabpanel" aria-labelledby="nav-mission-tab">
-                                        <div class="d-flex">
-                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
-                                            <div class="">
-                                                <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <h5>Jason Smith</h5>
-                                                    <div class="d-flex mb-3">
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star"></i>
+                                    <div class="tab-pane" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
+                                        <c:forEach var="review" items="${reviews}">
+                                            <div class="d-flex">
+                                               <!-- <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">-->
+                                                <div class="">
+                                                    <p class="mb-2" style="font-size: 14px;">${review.reviewDate}</p>
+                                                    <div class=" justify-content-between">
+                                                        <h5>Name customer: <span class="text-warning ">${review.customer.firstName} ${review.customer.lastName}</span></h5>
+                                                        
+                                                        <div class="d-flex mb-3"> <!--đánh giá theo kiểu int-->
+                                                            <c:forEach var="i" begin="1" end="5">
+                                                                <i class="fa fa-star ${i <= review.rating ? 'text-secondary' : ''}"></i>
+                                                            </c:forEach>
+                                                        </div>
                                                     </div>
+                                                    <p>Reviews of customer: <span class="text-warning h6">${review.reviewText}</span></p> 
                                                 </div>
-                                                <p>The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
-                                                    words etc. Susp endisse ultricies nisi vel quam suscipit </p>
                                             </div>
-                                        </div>
-                                        <div class="d-flex">
-                                            <img src="img/avatar.jpg" class="img-fluid rounded-circle p-3" style="width: 100px; height: 100px;" alt="">
-                                            <div class="">
-                                                <p class="mb-2" style="font-size: 14px;">April 12, 2024</p>
-                                                <div class="d-flex justify-content-between">
-                                                    <h5>Sam Peters</h5>
-                                                    <div class="d-flex mb-3">
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star text-secondary"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                    </div>
-                                                </div>
-                                                <p class="text-dark">The generated Lorem Ipsum is therefore always free from repetition injected humour, or non-characteristic 
-                                                    words etc. Susp endisse ultricies nisi vel quam suscipit </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="nav-vision" role="tabpanel">
-                                        <p class="text-dark">Tempor erat elitr rebum at clita. Diam dolor diam ipsum et tempor sit. Aliqu diam
-                                            amet diam et eos labore. 3</p>
-                                        <p class="mb-0">Diam dolor diam ipsum et tempor sit. Aliqu diam amet diam et eos labore.
-                                            Clita erat ipsum et lorem et sit</p>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>
@@ -178,33 +147,26 @@
                                 <div class="row g-4">
                                     <div class="col-lg-6">
                                         <div class="border-bottom rounded">
-                                            <input type="text" class="form-control border-0 me-4" placeholder="Yur Name *">
+                                            <input type="text" class="form-control border-0 me-4" placeholder="Your Name *">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="border-bottom rounded">
-                                            <input type="email" class="form-control border-0" placeholder="Your Email *">
+                                            <input type="email" class="form-control border-0 me-4" placeholder="Your Email *">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="border-bottom rounded my-4">
-                                            <textarea name="" id="" class="form-control border-0" cols="30" rows="8" placeholder="Your Review *" spellcheck="false"></textarea>
+                                        <div class="border-bottom rounded">
+                                            <input type="text" class="form-control border-0 me-4" placeholder="Subject">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
-                                        <div class="d-flex justify-content-between py-3 mb-5">
-                                            <div class="d-flex align-items-center">
-                                                <p class="mb-0 me-3">Please rate:</p>
-                                                <div class="d-flex align-items-center" style="font-size: 12px;">
-                                                    <i class="fa fa-star text-muted"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <a href="#" class="btn border border-secondary text-primary rounded-pill px-4 py-3"> Post Comment</a>
+                                        <div class="border-bottom rounded">
+                                            <textarea class="form-control border-0 me-4" rows="5" placeholder="Message"></textarea>
                                         </div>
+                                    </div>
+                                    <div class="col-lg-12 text-start">
+                                        <button type="submit" class="btn border border-secondary rounded-pill px-4 py-2 text-primary">Post Comment</button>
                                     </div>
                                 </div>
                             </form>

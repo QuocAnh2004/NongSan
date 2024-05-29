@@ -27,9 +27,9 @@
                     </button>
                     <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                         <div class="navbar-nav mx-auto">
-                            <a href="/app/user/index" class="nav-item nav-link">Home</a>
-                            <a href="/app/user/shop" class="nav-item nav-link ">Shop</a>
-                            <a href="/app/user/shop-detail" class="nav-item nav-link">Shop Detail</a>
+                            <a href="/home/index" class="nav-item nav-link">Home</a>
+                            <a href="/product/index" class="nav-item nav-link ">Shop</a>
+                            <!-- <a href="/app/user/shop-detail" class="nav-item nav-link">Shop Detail</a> -->
                             <a href="/app/user/contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="d-flex m-3 me-0">
