@@ -11,4 +11,9 @@ public class homecontroller {
 		return null;
 		
 	}
+	public String QA()
+	{
+		return null;
+		
+	}
 }
