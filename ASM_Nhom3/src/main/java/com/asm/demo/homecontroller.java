@@ -6,4 +6,9 @@ public class homecontroller {
 		return null;
 		
 	}
+	public String kietLat()
+	{
+		return null;
+		
+	}
 }
