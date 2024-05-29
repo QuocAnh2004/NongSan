@@ -6,4 +6,9 @@ public class homecontroller {
 		return null;
 		
 	}
+	public String dem1()
+	{
+		return null;
+		
+	}
 }
