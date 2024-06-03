@@ -6,7 +6,7 @@ public class homecontroller {
 		return null;
 		
 	}
-	public String nhanKiet()
+	public String kietLat()
 	{
 		return null;
 		
