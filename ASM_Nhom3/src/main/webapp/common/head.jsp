@@ -40,3 +40,6 @@
 	    <!-- Template Javascript -->
 	    <!-- <script src="/template/user/js/main.js"></script> -->
 	    <script src="<c:url value='/template/user/js/main.js' />"></script>
+	    
+	    <!-- icon -->
+	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">

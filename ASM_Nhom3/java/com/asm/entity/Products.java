@@ -2,6 +2,8 @@ package com.asm.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,12 +39,14 @@ public class Products {
     private String imageUrl;
 
     @Column(name = "import_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date importDate;
 
     @Column(name = "quantity")
     private int quantity;
 
     @Column(name = "exp_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expDate;
 
     @ManyToOne
@@ -57,5 +61,12 @@ public class Products {
     private boolean isActive;
 
     // Getters and setters
-}
+ // Getters and setters
+    public boolean getisActive() {
+        return isActive;
+    }
 
+    public void setisActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+}

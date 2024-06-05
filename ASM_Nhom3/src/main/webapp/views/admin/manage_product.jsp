@@ -1,313 +1,329 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ include file="/common/taglib.jsp"%>
+	pageEncoding="UTF-8"%>
+<%@ include file="/common/taglib.jsp"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<%@ include file="/common/admin/head.jsp" %>
+<title>Product Management</title>
+<%@ include file="/common/admin/head.jsp"%>
 </head>
 <body id="page-top">
+	<div id="wrapper">
+		<%@ include file="/common/admin/sidebar.jsp"%>
+		<div id="content-wrapper" class="d-flex flex-column">
+			<div id="content">
+				<%@ include file="/common/admin/topbar.jsp"%>
+				<div class="container-fluid">
+					<!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        
+                    </div> -->
+					<div class="row">
+						<div class="col-md-9">
+							<h1 class="h3 mb-3 text-gray-800 font-weight-bold text-uppercase">Product
+								Management</h1>
+						</div>
+						<div class="col-md-3">
+							<a href="/categories_list"
+								class="btn btn-sm btn-primary shadow-sm"> <i
+								class="bi bi-plus-circle-fill"></i> Add Category
+							</a> <a href="/suppliers_list"
+								class="btn btn-sm btn-primary shadow-sm"> <i
+								class="bi bi-plus-circle-fill"></i> Add Suppliers
+							</a>
+						</div>
+					</div>
+					<div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
+						<!-- Product form -->
+						<form:form action="/product/create" method="post"
+							modelAttribute="item" enctype="multipart/form-data">
+							<!-- Input fields for product information -->
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<form:input type="hidden" path="productId"
+										placeholder="Product Id" />
+									<label for="productName" class="text-gray-700">Product
+										Name</label>
+									<form:input path="productName" id="productName"
+										class="form-control" placeholder="Product Name"
+										required="required" />
+								</div>
+								<div class="form-group col-md-6">
+									<label for="supplier.supplierId" class="text-gray-700">Supplier</label>
+									<form:select path="supplier.supplierId" id="supplierId"
+										class="form-control">
+										<form:options items="${suppliers}" itemValue="supplierId"
+											itemLabel="name" />
+									</form:select>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="price" class="text-gray-700">Price</label>
+									<form:input path="price" id="price" class="form-control"
+										placeholder="VNĐ" required="required" />
+								</div>
+								<div class="form-group col-md-6">
+									<label for="salePrice" class="text-gray-700">Sale Price</label>
+									<form:input path="salePrice" id="salePrice"
+										class="form-control" placeholder="VNĐ" />
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="quantity" class="text-gray-700">Quantity</label>
+									<form:input path="quantity" id="quantity" class="form-control"
+										placeholder="Quantity" required="required" />
+								</div>
+								<div class="form-group col-md-6">
+									<label for="unit.unitId" class="text-gray-700">Unit</label>
+									<form:select path="unit.unitId" id="unitId"
+										class="form-control">
+										<form:options items="${units}" itemValue="unitId"
+											itemLabel="name" />
+									</form:select>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="category.categoryId" class="text-gray-700">Category</label>
+									<form:select path="category.categoryId" id="categoryId"
+										class="form-control">
+										<form:options items="${categories}" itemValue="categoryId"
+											itemLabel="categoryName" />
+									</form:select>
+								</div>
 
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-        <!-- Sidebar -->
-        <%@ include file="/common/admin/sidebar.jsp" %>
-        <!-- End of Sidebar -->
+								<div class="form-group col-md-6">
+									<label for="importDate" class="text-gray-700">Import
+										Date</label>
+									<form:input type="date"  path="importDate" id="importDate"
+										class="form-control" value="${dateTime}" pattern="\d{4}-\d{2}-\d{2}" />
+								</div>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
-            <div id="content">
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="description" class="text-gray-700">Description</label>
+									<form:textarea path="description" id="description"
+										class="form-control" rows="10"
+										placeholder="Product Description"></form:textarea>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="expDate" class="text-gray-700">Expiry Date</label>
+									<form:input type="date" path="expDate" id="expDate"
+										class="form-control"  pattern="\d{4}-\d{2}-\d{2}" />
 
-                    <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
+									<div class="form-group col-md-6">
+										<label for="imageUrl" class="text-gray-700">Image</label> <input
+											type="file" name="file" id="fileInput"
+											class="form-control-file" onchange="previewImages(event)"
+											accept="image/*" />
+										<div id="previewContainer" class="row"></div>
+										<!-- Container to display image previews -->
+									</div>
+
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6 mt-3">
+									<label class="text-gray-700">Status</label><br>
+									<div class="form-check form-check-inline">
+										<form:radiobutton path="isActive" id="active" value="true"
+											checked="checked" class="form-check-input" />
+										<label class="form-check-label" for="active">Active</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<form:radiobutton path="isActive" id="inactive" value="false"
+											class="form-check-input" />
+										<label class="form-check-label" for="inactive">Inactive</label>
+									</div>
+								</div>
+							</div>
+							<%-- <div class="mt-4">
+						        <button type="submit" class="btn btn-success">Add New</button>
+                                <form:form action="/product/update" method="post" modelAttribute="item">
+							        <button type="submit" class="btn btn-primary">Update</button>
+						    	</form:form>
+						    	<form:form action="/productForm" method="post" modelAttribute="item">
+							        <button type="submit" class="btn btn-secondary">Reset</button>
+						    	</form:form>
+						    </div> --%>
+							<div class="form-group">
+								<div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-primary"
+										formaction="/product/create">Create</button>
+									<button type="submit" class="btn btn-info"
+										formaction="/product/update">Update</button>
+									<a href="/product/delete/${item.productId}"
+										class="btn btn-danger text-end">Delete</a> <a
+										href="/productForm" class="btn btn-default">Reset</a>
+								</div>
+							</div>
+
+						</form:form>
+					</div>
+
+					<div class="card shadow mb-4 mt-5">
+						<div class="card">
+							<div class="card-header py-3">
+								<div class="d-flex align-items-center justify-content-between">
+									<h6 class="m-0 font-weight-bold text-primary text-uppercase">Product
+										List</h6>
+									<form class="form-inline">
+										<div class="input-group">
+											<input type="text"
+												class="form-control bg-light border-0 small"
+												placeholder="Search for..." aria-label="Search"
+												aria-describedby="basic-addon2">
+											<div class="input-group-append">
+												<button class="btn btn-primary" type="button">
+													<i class="fas fa-search fa-sm"></i>
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-hover table-bordered">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Name</th>
+											<th scope="col">Supplier</th>
+											<th scope="col">Price</th>
+											<th scope="col">Sale Price</th>
+											<th scope="col">Quantity</th>
+											<th scope="col">Unit</th>
+											<th scope="col">Category</th>
+											<th scope="col">Import Date</th>
+											<th scope="col">Image</th>
+											<th scope="col">Actions</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="product" items="${products}">
+											<tr>
+												<th scope="row">${product.productId}</th>
+												<td>${product.productName}</td>
+												<td>${product.supplier.name}</td>
+												<td>${product.price}</td>
+												<td>${product.salePrice}</td>
+												<td>${product.quantity}</td>
+												<td>${product.unit.name}</td>
+												<td>${product.category.categoryName}</td>
+												<td>${product.importDate}</td>
+												<td><c:if test="${not empty product.imageUrl}">
+														<img src="/template/user/picture/${product.imageUrl}"
+															class="img-thumbnail" width="100"
+															alt="${product.productId}" />
+													</c:if></td>
+												<td><a
+													href="${pageContext.request.contextPath}/product/edit/${product.productId}"
+													class="btn btn-sm btn-primary">Edit</a> <a
+													href="${pageContext.request.contextPath}/product/delete/${product.productId}"
+													class="btn btn-sm btn-danger"
+													onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- <h1 class="h3 mb-0 text-gray-800 font-weight-bold text-uppercase mt-5">Product List</h1> -->
+					<%-- <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md mt-3">
+                    	<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search text-end">
+	                        <div class="input-group">
+	                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+	                                aria-label="Search" aria-describedby="basic-addon2">
+	                            <div class="input-group-append">
+	                                <button class="btn btn-primary" type="button">
+	                                    <i class="fas fa-search fa-sm"></i>
+	                                </button>
+	                            </div>
+	                        </div>
+                    	</form>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Price</th>
+                                            <th>Sale Price</th>
+                                            <th>Unit</th>
+                                            <th>Image</th>
+                                            <th>Import Date</th>
+                                            <th>Quantity</th>
+                                            <th>Exp Date</th>
+                                            <th>Category</th>
+                                            <th>Supplier</th>
+                                            <th>Active</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach var="product" items="${products}">
+                                            <tr>
+                                                <td>${product.productId}</td>
+                                                <td>${product.productName}</td>
+                                                <td>${product.description}</td>
+                                                <td>${product.price}</td>
+                                                <td>${product.salePrice}</td>
+                                                <td>${product.unit.name}</td>
+                                                <td><img src="/template/user/picture/${product.imageUrl}" alt="Product Image" style="width: 50px; height: 50px;"></td>
+                                                <td>${product.importDate}</td>
+                                                <td>${product.quantity}</td>
+                                                <td>${product.expDate}</td>
+                                                <td>${product.category.categoryName}</td>
+                                                <td>${product.supplier.name}</td>
+                                                <td>${product.isActive ? "Yes" : "No"}</td>
+                                                <td>
+                                                    <a href="/product/edit/${product.productId}" class="btn btn-primary btn-md mb-2">Edit</a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </form>
-
-                    <!-- Topbar Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
-                                <form class="form-inline mr-auto w-100 navbar-search">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-
-                        <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                            problem I've been having.</div>
-                                        <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                                        <div class="status-indicator"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">I have the photos that you ordered last month, how
-                                            would you like them sent to you?</div>
-                                        <div class="small text-gray-500">Jae Chun · 1d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                                        <div class="status-indicator bg-warning"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Last month's report looks great, I am very happy with
-                                            the progress so far, keep up the good work!</div>
-                                        <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div>
-                                        <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                            told me that people say this to all dogs, even if they aren't good...</div>
-                                        <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profile
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Settings
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Activity Log
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Manage Products</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-                </div>
-                <!-- End of Page Content -->
-                <main class="pb-16 overflow-y-auto">
-                        <div class="container px-6 mx-auto">
-                            
-                            <!-- General elements -->
-                            <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md">
-                                <form action="ProductController" method="post">
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="name" class="text-gray-700">Name</label>
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Product Name" />
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="description" class="text-gray-700">Description</label>
-                                            <textarea name="description" id="description" class="form-control" rows="3"
-                                                placeholder="Product Description"></textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="price" class="text-gray-700">Price</label>
-                                            <input type="number" name="price" id="price" class="form-control" placeholder="Price" step="0.01" />
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="stock" class="text-gray-700">Stock</label>
-                                            <input type="number" name="stock" id="stock" class="form-control" placeholder="Stock" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="category_id" class="text-gray-700">Category ID</label>
-                                            <input type="number" name="category_id" id="category_id" class="form-control" placeholder="Category ID" />
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="unit" class="text-gray-700">Unit</label>
-                                            <input type="text" name="unit" id="unit" class="form-control" placeholder="Unit" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="image" class="text-gray-700">Upload Image</label>
-                                            <input type="file" name="image" id="image" class="form-control" accept="image/*" />
-                                        </div>
-                                        
-                                        <div class="form-group col-md-6">
-                                            <label for="supplier_id" class="text-gray-700">Supplier ID</label>
-                                            <input type="number" name="supplier_id" id="supplier_id" class="form-control" placeholder="Supplier ID" />
-                                        </div>
-                                    </div>
-
-                                   <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label class="text-gray-700">Active Status</label><br>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="active" id="active" value="1" checked>
-                                                <label class="form-check-label" for="active">Active</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="active" id="inactive" value="0">
-                                                <label class="form-check-label" for="inactive">Inactive</label>
-                                            </div>
-                                        </div>
-                                    
-                                    </div>
-                                    
-
-                                    <div class="mt-6">
-                                        <button type="submit" name="action" value="create" class="btn btn-success">Create</button>
-                                        <button type="submit" name="action" value="update" class="btn btn-primary ml-2">Update</button>
-                                        <button type="submit" name="action" value="delete" class="btn btn-danger ml-2">Delete</button>
-                                        <button type="reset" class="btn btn-secondary ml-2">Reset</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </main>
-            </div>
-            
-            <!-- End of Main Content -->
-        </div>
-        <!-- End of Content Wrapper -->
-    </div>
-    <!-- End of Page Wrapper -->
+                    </div> --%>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+<script>
+    function previewImages(event) {
+        const input = event.target;
+        const previewContainer = document.getElementById('previewContainer');
+        previewContainer.innerHTML = ''; // Clear previous previews
+
+        if (input.files) {
+            const filesArray = Array.from(input.files);
+            filesArray.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-4'; // Adjust to display more images
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'img-fluid img-thumbnail mb-2';
+                    img.style.maxHeight = '200px';
+                    col.appendChild(img);
+                    previewContainer.appendChild(col);
+                }
+                reader.readAsDataURL(file);
+            });
+        }
+    }
+</script>
 </html>

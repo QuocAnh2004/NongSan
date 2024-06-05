@@ -60,7 +60,7 @@
 							                <a href="/app/user/editProfile" class="dropdown-item">Edit profile</a>
 							                <a href="/app/user/changePass" class="dropdown-item">Change Password</a>
 							                <c:if test="${sessionScope.roleUserLogin eq 3}">
-   								 				<a href="/admin/control" class="dropdown-item">Admin Control</a>
+   								 				<a href="/admin/home" class="dropdown-item">Admin Control</a>
 											</c:if>
 							                <a href="/app/user/logout" class="dropdown-item">Logout</a>
 

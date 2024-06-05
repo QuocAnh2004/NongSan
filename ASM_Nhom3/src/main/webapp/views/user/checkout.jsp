@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Town/City<sup>*</sup></label>
-                                <input type="text" class="form-control">
+<input type="text" class="form-control">
                             </div>
                             <div class="form-item">
                                 <label class="form-label my-3">Country<sup>*</sup></label>
@@ -100,39 +100,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">
+                                        <c:forEach var="product" items="${cart}">
+                                              <tr>
+<th scope="row">
                                                 <div class="d-flex align-items-center mt-2">
-                                                    <img src="img/vegetable-item-2.jpg" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
+                                                    <c:url value="/template/user/picture/${product.imageUrl}" var="imageUrl"/>
+                                                    <img src="${imageUrl}"
+                                                    class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
                                                 </div>
                                             </th>
-                                            <td class="py-5">Awesome Brocoli</td>
-                                            <td class="py-5">$69.00</td>
-                                            <td class="py-5">2</td>
-                                            <td class="py-5">$138.00</td>
+                                            <td class="py-5">${product.productName}</td>
+                                            <td class="py-5">${product.price}</td>
+                                            <td class="py-5">${product.quantity}</td>
+                                            <td class="py-5">${product.quantity * product.price}</td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <div class="d-flex align-items-center mt-2">
-                                                    <img src="img/vegetable-item-5.jpg" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
-                                                </div>
-                                            </th>
-                                            <td class="py-5">Potatoes</td>
-                                            <td class="py-5">$69.00</td>
-                                            <td class="py-5">2</td>
-                                            <td class="py-5">$138.00</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <div class="d-flex align-items-center mt-2">
-                                                    <img src="img/vegetable-item-3.png" class="img-fluid rounded-circle" style="width: 90px; height: 90px;" alt="">
-                                                </div>
-                                            </th>
-                                            <td class="py-5">Big Banana</td>
-                                            <td class="py-5">$69.00</td>
-                                            <td class="py-5">2</td>
-                                            <td class="py-5">$138.00</td>
-                                        </tr>
+                                        </c:forEach>
+                                      
+                                      
                                         <tr>
                                             <th scope="row">
                                             </th>
@@ -143,7 +127,7 @@
                                             </td>
                                             <td class="py-5">
                                                 <div class="py-3 border-bottom border-top">
-                                                    <p class="mb-0 text-dark">$414.00</p>
+                                                    <p class="mb-0 text-dark">${subtotal} </p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -159,7 +143,7 @@
                                                     <label class="form-check-label" for="Shipping-1">Free Shipping</label>
                                                 </div>
                                                 <div class="form-check text-start">
-                                                    <input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-2" name="Shipping-1" value="Shipping">
+<input type="checkbox" class="form-check-input bg-primary border-0" id="Shipping-2" name="Shipping-1" value="Shipping">
                                                     <label class="form-check-label" for="Shipping-2">Flat rate: $15.00</label>
                                                 </div>
                                                 <div class="form-check text-start">
@@ -196,7 +180,7 @@
                             </div>
                             <div class="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                                 <div class="col-12">
-                                    <div class="form-check text-start my-3">
+<div class="form-check text-start my-3">
                                         <input type="checkbox" class="form-check-input bg-primary border-0" id="Payments-1" name="Payments" value="Payments">
                                         <label class="form-check-label" for="Payments-1">Check Payments</label>
                                     </div>

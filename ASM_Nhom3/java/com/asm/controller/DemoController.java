@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/app")
 public class DemoController {
-    @RequestMapping("/user/checkout")
-    public String checkout() {
-        return "user/checkout";
-    }
+//    @RequestMapping("/user/checkout")
+//    public String checkout() {
+//        return "user/checkout";
+//    }
 //    @RequestMapping("/user/index")
 //    public String index() {
 //        return "user/index";
