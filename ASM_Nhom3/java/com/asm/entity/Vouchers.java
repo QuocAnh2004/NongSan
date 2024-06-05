@@ -2,7 +2,10 @@ package com.asm.entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,7 @@ public class Vouchers {
     private int quantity;
 
     @Column(name = "expiry_date_voucher", nullable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date expiryDate;
 
     @Column(name = "is_active_voucher", nullable = false)

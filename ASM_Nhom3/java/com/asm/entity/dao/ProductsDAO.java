@@ -9,5 +9,6 @@ public interface ProductsDAO extends JpaRepository<Products, Integer> {
 
 	// PHÂN TRANG VỚI THAM SỐ PAGEABLE
     Page<Products> findAll(Pageable pageable);
-
+    
+    Page<Products> findAllByProductNameLike(String keyword, Pageable pageable ); // dsl;
 }

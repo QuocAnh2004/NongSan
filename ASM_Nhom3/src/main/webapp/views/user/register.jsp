@@ -15,33 +15,48 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6">
                     <h1 class="mt-5">Register</h1>
-                    <form>
+                    <form:form action="/account/save"  modelAttribute="customer">
                         <div class="mb-3">
-                            <label for="registerName" class="form-label">Full Name</label>
-                            <input type="text" class="form-control" id="registerName">
+                            <label for="registerFirstName" class="form-label">First Name</label>
+                            <form:input path="firstName" id="registerFirstName" class="form-control"  />
+                            <form:errors path="firstName" class="text-danger" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerLastName" class="form-label">Last Name</label>
+                            <form:input path="lastName" id="registerLastName" class="form-control"   />
+                            <form:errors path="lastName" class="text-danger" />
                         </div>
                         <div class="mb-3">
                             <label for="registerEmail" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="registerEmail" aria-describedby="emailHelp">
+                            <form:input path="email" id="registerEmail" class="form-control"   />
+                            <form:errors path="email" class="text-danger" />
                         </div>
                         <div class="mb-3">
-                            <label for="registerEmail" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="Address" aria-describedby="">
+                            <label for="registerAddress" class="form-label">Address</label>
+                            <form:input path="address" id="registerAddress" class="form-control"   />
+                            <form:errors path="address" class="text-danger" />
                         </div>
                         <div class="mb-3">
-                            <label for="registerEmail" class="form-label">PhoneNumber</label>
-                            <input type="text" class="form-control" id="PhoneNumber">
+                            <label for="registerPhoneNumber" class="form-label">Phone Number</label>
+                            <form:input path="phoneNumber" id="registerPhoneNumber" class="form-control"   />
+                            <form:errors path="phoneNumber" class="text-danger" />
                         </div>
                         <div class="mb-3">
-                            <label for="registerPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="registerPassword">
+                            <label for="registerDateOfBirth" class="form-label">Date of Birth</label>
+                            <form:input path="dateOfBirth" id="registerDateOfBirth" class="form-control" type="date"   />
+                            <form:errors path="dateOfBirth" class="text-danger" />
                         </div>
                         <div class="mb-3">
-                            <label for="registerConfirmPassword" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="registerConfirmPassword">
-                        </div>
+                            <label for="registerGender" class="form-label">Gender</label>
+                            <form:select path="gender" id="registerGender" class="form-select"  >
+							<form:option value="true">Male</form:option>
+                                <form:option value="false">Female</form:option>
+                            </form:select>
+                            <form:errors path="gender" cssClass="text-danger" />
+                        </div>                        
                         <button type="submit" class="btn btn-primary">Register</button>
-                    </form>
+                    </form:form>
+						<h1>${message}</h1>
                     <p class="mt-3">Already have an account? <a href="login.html">Login here</a></p>
                 </div>
             </div>
